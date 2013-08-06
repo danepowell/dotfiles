@@ -13,5 +13,7 @@
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 
 (require 'sgml-mode)
+(add-to-list 'load-path "~/.emacs.d/php-mode/")
+(require 'php-mode)
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
 
