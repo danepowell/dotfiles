@@ -16,4 +16,5 @@
 (add-to-list 'load-path "~/.emacs.d/php-mode/")
 (require 'php-mode)
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
+(setq auto-mode-alist (cons '("\\.module$" . php-mode) auto-mode-alist))
 
