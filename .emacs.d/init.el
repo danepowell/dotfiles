@@ -17,4 +17,4 @@
 (require 'php-mode)
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
 (setq auto-mode-alist (cons '("\\.module$" . php-mode) auto-mode-alist))
-
+(setq auto-mode-alist (cons '("\\.install$" . php-mode) auto-mode-alist))
