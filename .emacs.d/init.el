@@ -13,6 +13,9 @@
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 
 (require 'sgml-mode)
+(require 'drupal-mode)
+
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
-(setq auto-mode-alist (cons '("\\.module$" . php-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.install$" . php-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.\\(module\\|test\\|install\\|theme\\)$" . drupal-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(php\\|inc\\)$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.info" . conf-windows-mode))
