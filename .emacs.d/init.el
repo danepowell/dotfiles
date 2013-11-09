@@ -26,6 +26,11 @@
 (require 'sgml-mode)
 (require 'drupal-mode)
 (require 'markdown-mode)
+(require 'whitespace)
+
+;; 80 columns
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
