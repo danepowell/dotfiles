@@ -26,7 +26,6 @@
 (require 'sgml-mode)
 (require 'drupal-mode)
 (require 'markdown-mode)
-(require 'whitespace)
 (require 'apache-mode)
 
 ;; 80 columns
