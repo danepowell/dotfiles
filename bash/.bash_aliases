@@ -1,3 +1,5 @@
+alias sudo='sudo '
+
 alias e='emacs -nw'
 
 # if user is not root, pass all commands via sudo #
