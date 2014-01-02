@@ -1,6 +1,6 @@
 alias sudo='sudo '
 
-alias e='emacs -nw'
+alias e='emacs'
 
 # if user is not root, pass all commands via sudo #
 if [ $UID -ne 0 ]; then
