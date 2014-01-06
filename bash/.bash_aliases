@@ -1,10 +1,6 @@
 alias sudo='sudo '
 
-alias e=e_hack
-e_hack()
-{
-  emacs -mm $@ &
-}
+alias e='emacs -mm'
 
 # if user is not root, pass all commands via sudo #
 if [ $UID -ne 0 ]; then
