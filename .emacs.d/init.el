@@ -29,6 +29,11 @@
 (require 'drupal-mode)
 (require 'markdown-mode)
 (require 'apache-mode)
+(require 'auto-complete-config)
+
+;; Auto-complete config
+(ac-config-default)
+(add-to-list 'ac-modes 'drupal-mode)
 
 ;; 80 columns
 (setq whitespace-style '(face empty tabs lines-tail trailing))
