@@ -4,6 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(vc-follow-symlinks t)
  '(custom-enabled-themes (quote (tango-dark)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(inhibit-startup-screen t))
