@@ -1,7 +1,12 @@
 alias sudo='sudo '
 
 e() {
-  emacs $@ &
+  if [ "$DISPLAY" ]
+  then
+    emacs $@ &
+  else
+    emacs $@
+  fi
 }
 
 # if user is not root, pass all commands via sudo #
