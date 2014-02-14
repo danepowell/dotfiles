@@ -36,7 +36,7 @@
 (require 'drupal-mode)
 (require 'markdown-mode)
 (require 'apache-mode)
-(require 'auto-complete-config nil t)
+(require 'auto-complete-config)
 
 ;; Auto-complete config
 (ac-config-default)
