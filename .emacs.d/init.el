@@ -25,6 +25,12 @@
 (setq c-default-style "linux"
       c-basic-offset 2)
 
+;; Spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; JS styles
+(setq js-indent-level 2)
+
 ;; Require modes
 (require 'sgml-mode)
 (require 'drupal-mode)
