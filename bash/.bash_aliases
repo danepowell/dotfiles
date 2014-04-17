@@ -59,3 +59,10 @@ alias gpthis='git push origin HEAD:$(git_current_branch)'
 alias grb='git rebase -p'
 alias gup='git fetch origin && grb origin/$(git_current_branch)'
 alias gm='git merge --no-ff'
+
+sync-all() {
+  directory=${PWD##*/}
+  sudo -E drush rsync @${directory}:%files @self:%files
+  drush pipe --progress -y @${directory} @self
+  gup
+}
