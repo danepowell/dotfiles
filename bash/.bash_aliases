@@ -66,3 +66,27 @@ sync-all() {
   drush pipe --progress -y @${directory} @self
   gup
 }
+
+gitup() {
+  git_dir=`git rev-parse --show-toplevel`
+  project=`basename ${git_dir}`
+  drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
+  git checkout master
+  git fetch upstream
+  git merge upstream/master
+  drush updb ${drush_args}
+  drush fra ${drush_args}
+}
+
+gitup-full() {
+  git_dir=`git rev-parse --show-toplevel`
+  project=`basename ${git_dir}`
+  mysql -uroot -pasdf -e "DROP DATABASE ${project};"
+  mysql -uroot -pasdf -e "CREATE DATABASE ${project};"
+  mysql -u${project} -pasdf ${project} < ~/Desktop/${project}.sql
+  gitup
+  drush en stage_file_proxy ${drush_args}
+  drush dis acquia_spi acquia_agent apachesolr ${drush_args}
+  drush cron ${drush_args}
+  drush uli --uid=1 ${drush_args}
+}
