@@ -11,7 +11,6 @@ e() {
 
 # if user is not root, pass all commands via sudo #
 if [ $UID -ne 0 ]; then
-  alias reboot-delay='sudo shutdown -r 04:00 "Server will reboot overnight."'
   alias wifi-scan='sudo iwlist wlan0 scan'
   alias clean-boot='dpkg --get-selections|grep '"'"'linux-image*'"'"'|awk '"'"'{print $1}'"'"'|egrep -v "linux-image-$(uname -r)|linux-image-generic" |while read n;do sudo apt-get -y remove $n;done'
 fi
@@ -51,42 +50,38 @@ cb() {
   fi
 }
 
-function git_current_branch() {
-  git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///'
-}
-
-alias gpthis='git push origin HEAD:$(git_current_branch)'
-alias grb='git rebase -p'
-alias gup='git fetch origin && grb origin/$(git_current_branch)'
-alias gm='git merge --no-ff'
-
-sync-all() {
-  directory=${PWD##*/}
-  sudo -E drush rsync @${directory}:%files @self:%files
-  drush pipe --progress -y @${directory} @self
-  gup
-}
-
 gitup() {
+  # These should really be full bash scripts that use set -e
   git_dir=`git rev-parse --show-toplevel`
+  if [ $? -ne 0 ]; then
+    echo "this does not appear to be a git repository"
+    return
+  fi
   project=`basename ${git_dir}`
   drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
   git checkout master
   git fetch upstream
-  git merge upstream/master
+  git fetch acquia
+  git reset --hard upstream/master
   drush updb ${drush_args}
   drush fra ${drush_args}
 }
 
 gitup-full() {
   git_dir=`git rev-parse --show-toplevel`
+  if [ $? -ne 0 ]; then
+    echo "this does not appear to be a git repository"
+    return
+  fi
   project=`basename ${git_dir}`
   mysql -uroot -pasdf -e "DROP DATABASE ${project};"
   mysql -uroot -pasdf -e "CREATE DATABASE ${project};"
   mysql -u${project} -pasdf ${project} < ~/Desktop/${project}.sql
   gitup
-  drush en stage_file_proxy ${drush_args}
+  drush en stage_file_proxy dblog diff ${drush_args}
   drush dis acquia_spi acquia_agent apachesolr ${drush_args}
   drush cron ${drush_args}
   drush uli --uid=1 ${drush_args}
 }
+
+alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
