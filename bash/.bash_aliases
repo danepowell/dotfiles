@@ -67,6 +67,24 @@ gitup() {
   drush fra ${drush_args}
 }
 
+gitpr() {
+  git_dir=`git rev-parse --show-toplevel`
+  if [ $? -ne 0 ]; then
+    echo "this does not appear to be a git repository"
+    return
+  fi
+  project=`basename ${git_dir}`
+  drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
+  git checkout $1
+  git merge --no-edit master
+  if [ $? -ne 0 ]; then
+    echo "merge conflict"
+    return
+  fi
+  drush updb ${drush_args}
+  drush fra ${drush_args}
+}
+
 gitup-full() {
   git_dir=`git rev-parse --show-toplevel`
   if [ $? -ne 0 ]; then
