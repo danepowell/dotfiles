@@ -74,7 +74,7 @@ gitup() {
   drush lightupdb ${drush_args}
   for D in `find ${git_dir}/docroot/sites/all/themes/custom -mindepth 1 -maxdepth 1 -type d`; do
     echo "Bundling ${D}..."
-    (cd ${D}; bundle install; bundle update; bundle exec compass compile)
+    (cd ${D}; bundle install; bundle exec compass compile)
   done
   drush fra ${drush_args}
 }
