@@ -47,7 +47,7 @@ if [ "${branch}" == "full" ]; then
   echo "Importing DB for site ${project}..."
   mysql -e "DROP DATABASE ${project};"
   mysql -e "CREATE DATABASE ${project};"
-  mysql ${project} < ~/Desktop/${project}.sql
+  mysql ${project} < ~/Desktop/*${project}*.sql
 fi
 
 # Update DB
