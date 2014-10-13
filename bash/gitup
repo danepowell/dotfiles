@@ -20,6 +20,10 @@ git fetch upstream
 git fetch acquia
 git reset --hard upstream/master
 
+if [ -z "${project}" ]; then
+    exit
+fi
+
 # Checkout PR
 if [ -n "${branch}" ] && [ "${branch}" != "full" ]; then
   echo "Checking out ${branch}..."
@@ -59,8 +63,7 @@ echo "Reverting features..."
 drush fra ${drush_args}
 
 if [ "${branch}" == "full" ]; then
-  drush en stage_file_proxy dblog diff ${drush_args}
-  drush dis acquia_spi acquia_agent apachesolr ${drush_args}
+  drush en stage_file_proxy dblog diff devel ${drush_args}
   drush cron ${drush_args}
   drush uli --uid=1 ${drush_args}
 fi
