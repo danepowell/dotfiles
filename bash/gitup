@@ -8,6 +8,7 @@ set -e
 
 # Set variables
 git_dir=`git rev-parse --show-toplevel`
+git_branch=`git rev-parse --abbrev-ref HEAD`
 project=$1
 branch=$2
 drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
@@ -15,10 +16,9 @@ echo "Drush args are ${drush_args}"
 
 # Update codebase
 echo "Updating codebase..."
-git checkout master
 git fetch upstream
 git fetch acquia
-git reset --hard upstream/master
+git reset --hard upstream/${git_branch}
 
 if [ -z "${project}" ]; then
     exit
@@ -29,7 +29,7 @@ if [ -n "${branch}" ] && [ "${branch}" != "full" ]; then
   echo "Checking out ${branch}..."
   hub checkout ${branch}
   echo "Merging master..."
-  git merge --no-edit master
+  git merge --no-edit ${git_branch}
 fi
 
 # Compile theme changes
@@ -57,8 +57,8 @@ fi
 # Update DB
 echo "Updating DB..."
 drush lightupdb ${drush_args}
-echo "Clearing caches..."
-drush cc all ${drush_args}
+#echo "Clearing caches..."
+#drush cc all ${drush_args}
 echo "Reverting features..."
 drush fra ${drush_args}
 
