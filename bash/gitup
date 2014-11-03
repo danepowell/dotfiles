@@ -14,6 +14,14 @@ branch=$2
 drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
 echo "Drush args are ${drush_args}"
 
+if mysql "${project}" >/dev/null 2>&1 </dev/null
+then
+  echo "${project} found"
+else
+  echo "${project} does not exist (or I do not have permission to access it)"
+  exit
+fi
+
 # Update codebase
 echo "Updating codebase..."
 git fetch upstream
@@ -63,7 +71,7 @@ echo "Reverting features..."
 drush fra ${drush_args}
 
 if [ "${branch}" == "full" ]; then
-  drush en stage_file_proxy dblog diff devel ${drush_args}
+  drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
   drush cron ${drush_args}
   drush uli --uid=1 ${drush_args}
 fi
