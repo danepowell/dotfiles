@@ -6,7 +6,7 @@
 # Exit on errors
 set -e
 
-# Set variables
+# Set variables.
 git_dir=`git rev-parse --show-toplevel`
 git_branch=`git rev-parse --abbrev-ref HEAD`
 project=$1
@@ -14,6 +14,7 @@ branch=$2
 drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
 echo "Drush args are ${drush_args}"
 
+# Check if project exists.
 if mysql "${project}" >/dev/null 2>&1 </dev/null
 then
   echo "${project} found"
@@ -22,17 +23,18 @@ else
   exit
 fi
 
-# Update codebase
+# Update codebase.
 echo "Updating codebase..."
 git fetch upstream
 git fetch acquia
 git reset --hard upstream/${git_branch}
 
+# Exit if this is just a code update.
 if [ -z "${project}" ]; then
     exit
 fi
 
-# Checkout PR
+# Checkout PR.
 if [ -n "${branch}" ] && [ "${branch}" != "full" ]; then
   echo "Checking out ${branch}..."
   hub checkout ${branch}
@@ -40,7 +42,7 @@ if [ -n "${branch}" ] && [ "${branch}" != "full" ]; then
   git merge --no-edit ${git_branch}
 fi
 
-# Compile theme changes
+# Compile theme changes.
 for D in `find ${git_dir}/docroot/sites/all/themes/custom -mindepth 1 -maxdepth 1 -type d`; do
   if [ -f "${D}/Gemfile.lock" ]; then
     echo "Bundling ${D}..."
@@ -54,15 +56,21 @@ for D in `find ${git_dir}/docroot/sites/all/themes/custom -mindepth 1 -maxdepth 
   fi
 done
 
-# Import DB
+# Import DB.
 if [ "${branch}" == "full" ]; then
-  echo "Importing DB for site ${project}..."
+  echo "Emptying DB..."
   mysql -e "DROP DATABASE ${project};"
   mysql -e "CREATE DATABASE ${project};"
-  mysql ${project} < ~/Desktop/*${project}*.sql
+  if [ -f "${HOME}/Desktop/${project}-inter.sql" ]; then
+    echo "Importing intermediate DB..."
+    mysql ${project} < ~/Desktop/${project}-inter.sql
+  else
+    echo "Importing base DB..."
+    mysql ${project} < ~/Desktop/*${project}*.sql
+  fi
 fi
 
-# Update DB
+# Update DB.
 echo "Updating DB..."
 drush lightupdb ${drush_args}
 #echo "Clearing caches..."
@@ -70,8 +78,15 @@ drush lightupdb ${drush_args}
 echo "Reverting features..."
 drush fra ${drush_args}
 
+# Post-setup activities.
 if [ "${branch}" == "full" ]; then
-  drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
-  drush cron ${drush_args}
+  if [ ! -f "${HOME}/Desktop/${project}-inter.sql" ]; then
+    echo "Enabling devel modules..."
+    drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
+    echo "Running cron..."
+    drush cron ${drush_args}
+    echo "Dumping intermediate DB..."
+    mysqldump ${project} > ~/Desktop/${project}-inter.sql
+  fi
   drush uli --uid=1 ${drush_args}
 fi
