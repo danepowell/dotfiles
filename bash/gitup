@@ -61,12 +61,12 @@ if [ "${branch}" == "full" ]; then
   echo "Emptying DB..."
   mysql -e "DROP DATABASE ${project};"
   mysql -e "CREATE DATABASE ${project};"
-  if [ -f "${HOME}/Desktop/${project}-inter.sql" ]; then
+  if [ -f "${HOME}/Desktop/${project}-${git_branch}-inter.sql" ]; then
     echo "Importing intermediate DB..."
-    mysql ${project} < ~/Desktop/${project}-inter.sql
+    mysql ${project} < ~/Desktop/${project}-${git_branch}-inter.sql
   else
     echo "Importing base DB..."
-    mysql ${project} < ~/Desktop/*${project}*.sql
+    mysql ${project} < ~/Desktop/*-${project}-*.sql
   fi
 fi
 
@@ -86,7 +86,7 @@ if [ "${branch}" == "full" ]; then
     echo "Running cron..."
     drush cron ${drush_args}
     echo "Dumping intermediate DB..."
-    mysqldump ${project} > ~/Desktop/${project}-inter.sql
+    mysqldump ${project} > ~/Desktop/${project}-${git_branch}-inter.sql
   fi
   drush uli --uid=1 ${drush_args}
 fi
