@@ -80,7 +80,7 @@ drush fra ${drush_args}
 
 # Post-setup activities.
 if [ "${branch}" == "full" ]; then
-  if [ ! -f "${HOME}/Desktop/${project}-inter.sql" ]; then
+  if [ ! -f "${HOME}/Desktop/${project}-${git_branch}-inter.sql" ]; then
     echo "Enabling devel modules..."
     drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
     echo "Running cron..."
