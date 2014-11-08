@@ -72,6 +72,7 @@ fi
 
 # Update DB.
 echo "Updating DB..."
+echo "(updates started at `date`)"
 drush lightupdb ${drush_args}
 #echo "Clearing caches..."
 #drush cc all ${drush_args}
