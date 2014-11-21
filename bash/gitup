@@ -68,6 +68,7 @@ if [ "${branch}" == "full" ]; then
     echo "Importing base DB..."
     mysql ${project} < ~/Desktop/*-${project}-*.sql
   fi
+  drush cc all ${drush_args}
 fi
 
 # Update DB.
