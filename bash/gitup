@@ -68,7 +68,8 @@ if [ "${branch}" == "full" ]; then
     echo "Importing base DB..."
     mysql ${project} < ~/Desktop/*-${project}-*.sql
   fi
-  # Have to clear cache twice, otherwise weird errors. Don't know why.
+  # Have to clear cache twice, otherwise weird errors. Don't know why. Think because it tries to revert features.
+  # TODO: Truncate cache* tables instead.
   drush cc all ${drush_args}
   drush cc all ${drush_args}
 fi
