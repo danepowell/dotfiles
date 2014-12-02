@@ -68,10 +68,7 @@ if [ "${branch}" == "full" ]; then
     echo "Importing base DB..."
     mysql ${project} < ~/Desktop/*-${project}-*.sql
   fi
-  # Have to clear cache twice, otherwise weird errors. Don't know why. Think because it tries to revert features.
-  # TODO: Truncate cache* tables instead.
-  drush cc all ${drush_args}
-  drush cc all ${drush_args}
+  mysql -e "SELECT concat('TRUNCATE TABLE ', TABLE_NAME, ';') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '${project}' AND TABLE_NAME LIKE 'cache%'" | sed 1d | mysql ${project}
 fi
 
 # Update DB.
