@@ -10,7 +10,7 @@ set -e
 git_dir=`git rev-parse --show-toplevel`
 git_branch=`git rev-parse --abbrev-ref HEAD`
 project=$1
-branch=$2
+branch=`echo $2 | sed -e 's/\(files\)*$//g'`
 drush_args="-y -r ${git_dir}/docroot -l ${project}.local"
 echo "Drush args are ${drush_args}"
 
