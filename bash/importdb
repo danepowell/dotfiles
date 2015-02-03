@@ -26,13 +26,8 @@ fi
 echo "Emptying DB..."
 mysql -e "DROP DATABASE ${project};"
 mysql -e "CREATE DATABASE ${project};"
-if [ -f "${HOME}/Desktop/${project}-${git_branch}-inter.sql" ]; then
-  echo "Importing intermediate DB..."
-  mysql ${project} < ~/Desktop/${project}-${git_branch}-inter.sql
-else
-  echo "Importing base DB..."
-  mysql ${project} < ~/Desktop/*-${project}-*.sql
-fi
+echo "Importing base DB..."
+mysql ${project} < ~/Desktop/*-${project}-*.sql
 mysql -e "SELECT concat('TRUNCATE TABLE ', TABLE_NAME, ';') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '${project}' AND TABLE_NAME LIKE 'cache%'" | sed 1d | mysql ${project}
 
 # Update DB.
@@ -43,12 +38,8 @@ echo "Reverting features..."
 drush fra ${drush_args}
 
 # Post-setup activities.
-if [ ! -f "${HOME}/Desktop/${project}-${git_branch}-inter.sql" ]; then
-  echo "Enabling devel modules..."
-  drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
-  echo "Running cron..."
-  drush cron ${drush_args}
-  echo "Dumping intermediate DB..."
-  mysqldump ${project} > ~/Desktop/${project}-${git_branch}-inter.sql
-fi
+echo "Enabling devel modules..."
+drush en stage_file_proxy dblog diff devel feeds_ui ${drush_args}
+echo "Running cron..."
+drush cron ${drush_args}
 drush uli --uid=1 ${drush_args}
