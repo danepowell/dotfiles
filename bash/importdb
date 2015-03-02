@@ -27,7 +27,7 @@ echo "Emptying DB..."
 mysql -e "DROP DATABASE ${project};"
 mysql -e "CREATE DATABASE ${project};"
 echo "Importing base DB..."
-mysql ${project} < ~/Desktop/*-${project}-*.sql
+mysql ${project} < ~/Downloads/*-${project}-*.sql
 mysql -e "SELECT concat('TRUNCATE TABLE ', TABLE_NAME, ';') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '${project}' AND TABLE_NAME LIKE 'cache%'" | sed 1d | mysql ${project}
 
 # Update DB.
