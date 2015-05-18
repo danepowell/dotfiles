@@ -1,4 +1,5 @@
 alias sudo='sudo '
+export XDEBUG_CONFIG="idekey=PHPSTORM"
 
 e() {
   if [ "$DISPLAY" ]
@@ -50,7 +51,7 @@ cb() {
   fi
 }
 
-alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc'
+alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc && git fetch --all -p'
 
 if [ -f ~/.bash_git ]; then
     . ~/.bash_git
