@@ -37,6 +37,7 @@
 (require 'markdown-mode)
 (require 'apache-mode)
 (require 'auto-complete-config)
+(require 'feature-mode)
 
 ;; Auto-complete config
 (ac-config-default)
@@ -62,6 +63,8 @@
 (add-to-list 'auto-mode-alist '("srm\\.conf\\'"    . apache-mode))
 (add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
 (add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
