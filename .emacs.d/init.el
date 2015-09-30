@@ -54,7 +54,7 @@
 (add-to-list 'auto-mode-alist '("\\.\\(php\\|inc\\)$" . drupal-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(drush\\)$" . drupal-mode))
 
-(add-to-list 'auto-mode-alist '("\\.info" . conf-windows-mode))
+(add-to-list 'auto-mode-alist '("\\.info\\'" . conf-windows-mode))
 
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
