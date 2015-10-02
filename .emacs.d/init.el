@@ -31,6 +31,9 @@
 ;; JS styles
 (setq js-indent-level 2)
 
+;; CSS styles
+(setq css-indent-offset 2)
+
 ;; Require modes
 (require 'sgml-mode)
 (require 'drupal-mode)
