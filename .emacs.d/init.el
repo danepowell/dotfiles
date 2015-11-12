@@ -41,6 +41,13 @@
 (require 'apache-mode)
 (require 'auto-complete-config)
 (require 'feature-mode)
+(require 'typopunct)
+(typopunct-change-language 'english t)
+(add-hook 'markdown-mode-hook 'my-markdown-init)
+(defun my-markdown-init ()
+  (require 'typopunct)
+  (typopunct-change-language 'english)
+  (typopunct-mode 1))
 
 ;; Auto-complete config
 (ac-config-default)
@@ -48,6 +55,7 @@
 
 ;; 80 columns
 (setq whitespace-style '(face empty tabs lines-tail trailing))
+(setq whitespace-global-modes '(not markdown-mode))
 (global-whitespace-mode t)
 
 ;; File associations
