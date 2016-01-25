@@ -20,6 +20,9 @@ if [ -f ~/.bash_aliases.local ]; then
     . ~/.bash_aliases.local
 fi
 
+alias gp='git push'
+alias gf='git fetch'
+
 cb() {
   local _scs_col="\e[0;32m"; local _wrn_col='\e[1;31m'; local _trn_col='\e[0;33m'
   # Check that xclip is installed.
