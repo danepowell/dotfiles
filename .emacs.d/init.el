@@ -48,6 +48,8 @@
   (require 'typopunct)
   (typopunct-change-language 'english)
   (typopunct-mode 1))
+(require 'editorconfig)
+(editorconfig-mode 1)
 
 ;; Auto-complete config
 (ac-config-default)
