@@ -1,6 +1,8 @@
 alias sudo='sudo '
-alias spinup='sudo service php5-fpm start; sudo service apache2 start; sudo service mysql start'
 export XDEBUG_CONFIG="idekey=PHPSTORM"
+if [ -d ~/bin ]; then
+    export PATH="~/bin:$PATH"
+fi
 
 e() {
   if [ "$DISPLAY" ]
