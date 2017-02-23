@@ -1,3 +1,11 @@
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
