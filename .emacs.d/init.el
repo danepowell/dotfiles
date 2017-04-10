@@ -37,7 +37,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; JS styles
-(setq js-indent-level 2)
+(setq js-indent-level 4)
 
 ;; CSS styles
 (setq css-indent-offset 2)
