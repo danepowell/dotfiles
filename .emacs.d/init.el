@@ -12,10 +12,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(vc-follow-symlinks t)
  '(custom-enabled-themes (quote (tango-dark)))
+ '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(inhibit-startup-screen t))
+ '(package-selected-packages
+   (quote
+    (json-mode smartparens markdown-mode expand-region drupal-mode auto-complete)))
+ '(vc-follow-symlinks t))
 
 ;; Backup preferences
 (setq
@@ -37,7 +40,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; JS styles
-(setq js-indent-level 4)
+(setq js-indent-level 2)
 
 ;; CSS styles
 (setq css-indent-offset 2)
