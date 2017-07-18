@@ -1,8 +1,5 @@
 alias sudo='sudo '
 export XDEBUG_CONFIG="idekey=PHPSTORM"
-if [ -d ~/bin ]; then
-    export PATH="/home/dane/bin:$PATH"
-fi
 
 e() {
   if [ "$DISPLAY" ]
