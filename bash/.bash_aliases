@@ -59,6 +59,6 @@ cb() {
 
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc && git fetch --all -p'
 
-if [ -f ~/.bash_git ]; then
-    . ~/.bash_git
+if [ -f ~/.bash_git_ubuntu ]; then
+    . ~/.bash_git_ubuntu
 fi
