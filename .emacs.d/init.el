@@ -17,7 +17,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (json-mode smartparens markdown-mode expand-region drupal-mode auto-complete)))
+    (php-mode yaml-mode json-mode smartparens markdown-mode expand-region drupal-mode auto-complete)))
  '(vc-follow-symlinks t))
 
 ;; Backup preferences
