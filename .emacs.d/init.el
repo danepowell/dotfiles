@@ -42,6 +42,12 @@
 ;; JS styles
 (setq js-indent-level 2)
 
+;; JSON should be indented at 4
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 4)))
+
 ;; CSS styles
 (setq css-indent-offset 2)
 
