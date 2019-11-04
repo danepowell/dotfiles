@@ -59,3 +59,5 @@ alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 if [ -f ~/.bash_git_ubuntu ]; then
     . ~/.bash_git_ubuntu
 fi
+
+alias php-xdebug='php -d zend_extension=xdebug.so'
