@@ -61,3 +61,7 @@ if [ -f ~/.bash_git_ubuntu ]; then
 fi
 
 alias php-xdebug='php -d zend_extension=xdebug.so'
+
+if [ -d $HOME/bin ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
