@@ -56,10 +56,6 @@ cb() {
 
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc && git fetch --all -p'
 
-if [ -f ~/.bash_git_ubuntu ]; then
-    . ~/.bash_git_ubuntu
-fi
-
 alias php-xdebug='php -d zend_extension=xdebug.so'
 
 if [ -d $HOME/bin ]; then

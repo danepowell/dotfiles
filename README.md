@@ -11,3 +11,5 @@ Emacs requires the following packages, which can be installed using the new buil
 * yaml-mode
 
 Don’t forget that the package manager needs to be refreshed periodically (i.e. if a package cannot be found.)
+
+For Bash Git prompt, use `drush init`.
