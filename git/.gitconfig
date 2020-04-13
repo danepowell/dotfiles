@@ -1,3 +1,5 @@
 [user]
 	email = git@danepowell.com
 	name = Dane Powell
+[core]
+	excludesfile = ~/.gitignore
