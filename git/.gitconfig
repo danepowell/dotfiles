@@ -1,5 +1,8 @@
 [user]
 	email = git@danepowell.com
 	name = Dane Powell
+	signingkey = DC893801D122A571
 [core]
 	excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
