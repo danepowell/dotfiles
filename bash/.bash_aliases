@@ -58,7 +58,3 @@ alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 
 alias php-xdebug='php -d zend_extension=xdebug.so'
 alias xdebug='sudo ~/.config/composer/vendor/bin/xdebug --ini-file=/etc/php/7.4/mods-available/xdebug.ini'
-
-if [ -d $HOME/bin ]; then
-  export PATH="$HOME/bin:$PATH"
-fi
