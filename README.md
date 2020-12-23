@@ -12,7 +12,7 @@ On Ubuntu:
 sudo apt install make
 ```
 
-Clone into `$HOME/opt/dotfiles`, then `make`.
+Clone into `$HOME/opt/dotfiles`, then `make`. Some errors from brew about shallow clones are normal, these will be fixed after homebrew/core is tapped and made unshallow... I think.
 
 ## GPG and SSH keys
 
@@ -20,7 +20,7 @@ Download keys and install in `~/.ssh` and via `gpg --import <private-key.asc>`.
 
 ## Emacs
 
-Emacs 27 is required to use XDG_CONFIG_HOME.
+Emacs 27 is required to use XDG_CONFIG_HOME. Brew installs this automatically on Mac, but you need a custom apt repo on Ubuntu.
 
 ```
 sudo add-apt-repository ppa:kelleyk/emacs

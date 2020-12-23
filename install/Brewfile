@@ -1,1 +1,5 @@
-brew "patch"
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+brew "emacs"
+brew "wget"
