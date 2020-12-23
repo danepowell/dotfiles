@@ -6,7 +6,7 @@
    t)
   (package-initialize))
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.config/emacs/lisp")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,7 +30,7 @@
           `((".*" ,temporary-file-directory t)))
 
 ;; Abbreviations
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq abbrev-file-name "~/.config/emacs/abbrev_defs")
 
 ;; C++ styles
 (setq c-default-style "linux"

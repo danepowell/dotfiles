@@ -14,6 +14,10 @@ sudo apt install make
 
 Clone into `$HOME/opt/dotfiles`, then `make`.
 
+## GPG and SSH keys
+
+Download keys and install in `~/.ssh` and via `gpg --import <private-key.asc>`.
+
 ## Emacs
 
 Emacs 27 is required to use XDG_CONFIG_HOME.
