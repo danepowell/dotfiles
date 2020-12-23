@@ -3,6 +3,6 @@
 	name = Dane Powell
 	signingkey = DC893801D122A571
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 [commit]
 	gpgsign = true
