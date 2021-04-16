@@ -1,5 +1,5 @@
+# Pass aliases to the root account
 alias sudo='sudo '
-export XDEBUG_CONFIG="idekey=PHPSTORM"
 
 e() {
   if [ "$DISPLAY" ]
@@ -10,18 +10,9 @@ e() {
   fi
 }
 
-# if user is not root, pass all commands via sudo #
-if [ $UID -ne 0 ]; then
-  alias wifi-scan='sudo iwlist wlan0 scan'
-  alias clean-boot='dpkg --get-selections|grep '"'"'linux-image*'"'"'|awk '"'"'{print $1}'"'"'|egrep -v "linux-image-$(uname -r)|linux-image-generic" |while read n;do sudo apt-get -y remove $n;done'
-fi
-
 if [ -f ~/.bash_aliases.local ]; then
     . ~/.bash_aliases.local
 fi
-
-alias gp='git push'
-alias gf='git fetch'
 
 cb() {
   local _scs_col="\e[0;32m"; local _wrn_col='\e[1;31m'; local _trn_col='\e[0;33m'
@@ -56,5 +47,4 @@ cb() {
 
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc && git fetch --all -p'
 
-alias php-xdebug='php -d zend_extension=xdebug.so'
-alias xdebug='sudo ~/.config/composer/vendor/bin/xdebug --ini-file=/etc/php/7.4/mods-available/xdebug.ini'
+alias xdebug='export XDEBUG_CONFIG="remote_enable=1"'
