@@ -29,6 +29,7 @@ sudo apt install emacs27-nox
 
 Emacs requires the following packages, which can be installed using the new built-in package manager (M-x package-install):
 * auto-complete
+* feature-mode
 * json-mode
 * markdown-mode
 * php-mode
