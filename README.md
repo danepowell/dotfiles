@@ -27,6 +27,8 @@ sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt install emacs27-nox
 ```
 
+Note that if `~/.emacs.d` already exists, Emacs may not use XDG_CONFIG_HOME.
+
 Emacs requires the following packages, which can be installed using the new built-in package manager (M-x package-install):
 * auto-complete
 * feature-mode
