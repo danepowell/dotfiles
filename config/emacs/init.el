@@ -6,6 +6,14 @@
    t)
   (package-initialize))
 
+;; This works for copying, but not pasting for some reason
+(setq select-enable-clipboard t)
+
+;; Whatever... it's easy enough to implement that part ourselves
+(setq interprogram-paste-function
+      (lambda ()
+        (shell-command-to-string "pbpaste")))
+
 (add-to-list 'load-path "~/.config/emacs/lisp")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
