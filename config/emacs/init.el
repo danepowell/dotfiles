@@ -6,26 +6,17 @@
    t)
   (package-initialize))
 
-;; This works for copying, but not pasting for some reason
-(setq select-enable-clipboard t)
-
-;; Whatever... it's easy enough to implement that part ourselves
-(setq interprogram-paste-function
-      (lambda ()
-        (shell-command-to-string "pbpaste")))
-
 (add-to-list 'load-path "~/.config/emacs/lisp")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-enabled-themes '(tango-dark))
  '(inhibit-startup-screen t)
- '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   (quote
-    (php-mode yaml-mode json-mode smartparens markdown-mode expand-region auto-complete)))
+   '(xclip php-mode yaml-mode json-mode smartparens markdown-mode expand-region auto-complete))
  '(vc-follow-symlinks t))
 
 ;; Backup preferences
@@ -58,6 +49,8 @@
 
 ;; CSS styles
 (setq css-indent-offset 2)
+
+(xclip-mode 1)
 
 ;; Require modes
 (require 'sgml-mode)
