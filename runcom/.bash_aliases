@@ -47,4 +47,4 @@ cb() {
 
 alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d && git gc && git fetch --all -p'
 
-alias xdebug='[[ "$XDEBUG_MODE" == debug ]] && export XDEBUG_MODE=off || export XDEBUG_MODE=debug'
+alias xdebug='[[ "$XDEBUG_MODE" == debug ]] && { export XDEBUG_MODE=off && export COMPOSER_ALLOW_XDEBUG=0; } || { export XDEBUG_MODE=debug && export COMPOSER_ALLOW_XDEBUG=1; }'
