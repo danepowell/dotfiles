@@ -6,3 +6,5 @@
 	excludesfile = ~/.config/git/ignore
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = master

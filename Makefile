@@ -11,7 +11,7 @@ all: $(OS)
 
 macos: sudo core-macos packages link
 
-linux: core-linux link
+linux: core-linux linux-packages link
 
 core-macos: brew git
 
@@ -25,6 +25,9 @@ stow-macos: brew
 
 stow-linux: core-linux
 	is-executable stow || sudo apt-get -y install stow
+
+linux-packages: core-linux
+	sudo apt install $(shell cat install/apt)
 
 sudo:
 ifndef GITHUB_ACTION
