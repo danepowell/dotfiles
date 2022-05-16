@@ -24,7 +24,7 @@ stow-macos: brew
 	is-executable stow || brew install stow
 
 stow-linux: core-linux
-	is-executable stow || apt-get -y install stow
+	is-executable stow || sudo apt-get -y install stow
 
 sudo:
 ifndef GITHUB_ACTION
