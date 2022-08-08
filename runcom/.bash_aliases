@@ -52,7 +52,7 @@ alias git-cleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 
 alias xdebug='[[ "$XDEBUG_MODE" == debug ]] && { export XDEBUG_MODE=off && export COMPOSER_ALLOW_XDEBUG=0; } || { export XDEBUG_MODE=debug && export COMPOSER_ALLOW_XDEBUG=1; }'
 
-alias docker-cleanup='docker rm -vf $(docker ps -aq) && docker rmi -f $(docker images -aq)'
+alias docker-cleanup='docker kill $(docker ps -q); docker rm $(docker ps --filter=status=exited --filter=status=created -q); docker rmi -f $(docker images -aq); docker volume rm $(docker volume ls -q); docker builder prune -a'
 
 php-version() {
   brew-php-switcher "$1" -s
