@@ -39,13 +39,9 @@
 (setq-default indent-tabs-mode nil)
 
 ;; JS styles
-(setq js-indent-level 2)
+(setq js-indent-level 4)
 
-;; JSON should be indented at 4
-(add-hook 'json-mode-hook
-          (lambda ()
-            (make-local-variable 'js-indent-level)
-            (setq js-indent-level 4)))
+;; JSON indentation is borked https://github.com/joshwnj/json-mode/issues/75
 
 ;; CSS styles
 (setq css-indent-offset 2)
