@@ -113,7 +113,19 @@ export EDITOR='emacs'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ ! -s /Users/dane.powell/.bash_aliases ] || source /Users/dane.powell/.bash_aliases
+# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
+CURRENT_SCRIPT=$BASH_SOURCE
+
+if [[ -n $CURRENT_SCRIPT && -x readlink ]]; then
+  SCRIPT_PATH=$(readlink -n $CURRENT_SCRIPT)
+  DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
+elif [ -d "$HOME/.dotfiles" ]; then
+  DOTFILES_DIR="$HOME/.dotfiles"
+else
+  echo "Unable to find dotfiles, exiting."
+  return
+fi
+
+for DOTFILE in "$DOTFILES_DIR"/system/.{alias,fnm}; do
+  . "$DOTFILE"
+done
