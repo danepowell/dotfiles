@@ -126,6 +126,17 @@ else
   return
 fi
 
+# Make utilities available
+
+PATH="$DOTFILES_DIR/bin:$PATH"
+
+# Source the dotfiles (order matters)
+
 for DOTFILE in "$DOTFILES_DIR"/system/.{alias,fnm}; do
   . "$DOTFILE"
 done
+
+# Wrap up
+
+unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+export DOTFILES_DIR

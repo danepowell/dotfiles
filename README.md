@@ -62,6 +62,10 @@ cd ~/.dotfiles
 make
 ```
 
+## Post-Installation
+
+- `dot dock` (set [Dock items](./macos/dock.sh))
+
 ## Resources
 
 Credit for most of this goes to https://github.com/webpro/dotfiles
