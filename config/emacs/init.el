@@ -1,10 +1,7 @@
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "https://melpa.org/packages/")
-   t)
-  (package-initialize))
+(add-to-list
+ 'package-archives
+ '("melpa" . "https://melpa.org/packages/")
+ t)
 
 (add-to-list 'load-path "~/.config/emacs/lisp")
 (custom-set-variables
@@ -12,12 +9,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(tango-dark))
+; '(custom-enabled-themes '(tango-dark))
  '(inhibit-startup-screen t)
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
    '(xclip php-mode yaml-mode json-mode smartparens markdown-mode expand-region auto-complete))
  '(vc-follow-symlinks t))
+
+;; Auto-install packages
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
 
 ;; Backup preferences
 (setq
@@ -31,10 +34,6 @@
 ;; Abbreviations
 (setq abbrev-file-name "~/.config/emacs/abbrev_defs")
 
-;; C++ styles
-(setq c-default-style "linux"
-      c-basic-offset 2)
-
 ;; Spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
@@ -42,9 +41,6 @@
 (setq js-indent-level 4)
 
 ;; JSON indentation is borked https://github.com/joshwnj/json-mode/issues/75
-
-;; CSS styles
-(setq css-indent-offset 2)
 
 (xclip-mode 1)
 
@@ -54,7 +50,6 @@
 (require 'markdown-mode)
 (require 'apache-mode)
 (require 'auto-complete-config)
-(require 'feature-mode)
 (require 'typopunct)
 (typopunct-change-language 'english t)
 (add-hook 'markdown-mode-hook 'my-markdown-init)
@@ -90,7 +85,6 @@
 (add-to-list 'auto-mode-alist '("srm\\.conf\\'"    . apache-mode))
 (add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
 (add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
-(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
