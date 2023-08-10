@@ -1,5 +1,6 @@
 cask "docker"
 cask "google-chrome"
+cask "phpstorm"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
