@@ -11,6 +11,7 @@ CASE_SENSITIVE="true"
 zstyle ':completion:*:*:git*' ignored-patterns 'fetch-pack|merge-*|mergetool'
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
+unsetopt share_history
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
