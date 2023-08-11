@@ -1,3 +1,4 @@
+(package-initialize)
 (add-to-list
  'package-archives
  '("melpa" . "https://melpa.org/packages/")
@@ -17,7 +18,6 @@
  '(vc-follow-symlinks t))
 
 ;; Auto-install packages
-(package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
