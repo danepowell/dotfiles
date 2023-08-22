@@ -10,11 +10,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-; '(custom-enabled-themes '(tango-dark))
  '(inhibit-startup-screen t)
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
    '(xclip php-mode yaml-mode json-mode smartparens markdown-mode expand-region auto-complete))
+ '(safe-local-variable-values '((encoding . utf-8)))
  '(vc-follow-symlinks t))
 
 ;; Auto-install packages
