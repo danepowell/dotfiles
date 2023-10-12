@@ -29,7 +29,7 @@ stow-macos: brew
 stow-linux:
 	is-executable stow || sudo apt-get -y install stow
 
-linux-packages: node apt-packages n npm
+linux-packages: node apt-packages n npm node-packages
 
 node:
 ifneq ("$(wildcard $(/etc/apt/keyrings/nodesource.gpg))","")
@@ -76,3 +76,6 @@ brew-packages: brew
 
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
+
+node-packages: npm
+	$(N_PREFIX)/bin/npm install -g $(shell cat install/npmfile)
