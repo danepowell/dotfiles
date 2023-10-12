@@ -38,3 +38,15 @@ fi
 
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 export DOTFILES_DIR
+
+# fnm
+export PATH="/home/dane/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# pnpm
+export PNPM_HOME="/home/dane/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

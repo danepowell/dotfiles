@@ -12,7 +12,7 @@ xcode-select --install
 
 The Xcode Command Line Tools includes `git` and `make` (not available on stock macOS). Now there are two options:
 
-1. Install this repo with `curl` available:
+1. Install this repo with `curl` available (install `git` first if you plan to make any changes):
 
 ```bash
 bash -c "`curl -fsSL https://raw.githubusercontent.com/danepowell/dotfiles/master/remote-install.sh`"
