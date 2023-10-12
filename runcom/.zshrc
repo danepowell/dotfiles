@@ -24,7 +24,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,direnv,fnm,rvm}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,alias,direnv,rvm}; do
   . "$DOTFILE"
 done
 
@@ -38,10 +38,6 @@ fi
 
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 export DOTFILES_DIR
-
-# fnm
-export PATH="/home/dane/.local/share/fnm:$PATH"
-eval "`fnm env`"
 
 # pnpm
 export PNPM_HOME="/home/dane/.local/share/pnpm"

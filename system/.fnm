@@ -1,3 +1,0 @@
-eval "$(fnm env --use-on-cd)"
-FNM_DIR=$XDG_DATA_HOME/fnm
-FNM_COREPACK_ENABLED=true

@@ -1,5 +1,6 @@
 direnv
 emacs-nox
 git
+nodejs
 xclip
 zsh
