@@ -14,11 +14,11 @@ export ACCEPT_EULA=Y
 
 all: $(OS)
 
-macos: sudo core-macos macos-packages link
+macos: sudo core-macos macos-packages npm link
 
 linux: linux-packages link
 
-core-macos: brew git npm
+core-macos: brew git
 
 n:
 	sudo npm install -g n
