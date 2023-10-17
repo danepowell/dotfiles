@@ -1635,7 +1635,8 @@
                                             "^co\\.zeit\\.hyperterm$",
                                             "^co\\.zeit\\.hyper$",
                                             "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$"
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.jetbrains\\.PhpStorm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1689,7 +1690,8 @@
                                             "^co\\.zeit\\.hyperterm$",
                                             "^co\\.zeit\\.hyper$",
                                             "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$"
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.jetbrains\\.PhpStorm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
