@@ -60,6 +60,10 @@
 (require 'editorconfig)
 (editorconfig-mode 1)
 
+;; Display line and column numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq column-number-mode t)
+
 ;; Auto-complete config
 (ac-config-default)
 (add-to-list 'ac-modes 'drupal-mode)
