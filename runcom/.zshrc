@@ -24,7 +24,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,alias,direnv,rvm}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,alias,direnv,rvm,completion}; do
   . "$DOTFILE"
 done
 
@@ -39,10 +39,8 @@ fi
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 export DOTFILES_DIR
 
-# pnpm
-export PNPM_HOME="/home/dane/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Git branch and tag commands can't just print to STDOUT like a normal program...
+# https://stackoverflow.com/questions/48341920/git-branch-command-behaves-like-less
+export LESS=-FRX
+
+source /Users/dane.powell/src/acquia/teleport-tool/aliases
