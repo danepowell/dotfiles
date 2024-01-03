@@ -38,6 +38,15 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # Dock                                                                        #
 ###############################################################################
 
+# Move left
+defaults write com.apple.dock "orientation" -string "left"
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
 # Disable hot corners
 defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tr-corner -int 0
