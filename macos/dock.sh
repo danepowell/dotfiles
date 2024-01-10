@@ -9,5 +9,6 @@ dockutil --no-restart --add "/Applications/Klipped.app"
 dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/Zoom.us.app"
 dockutil --no-restart --add "/Applications/1Password.app"
+dockutil --no-restart --add "/System/Applications/Utilities/Screenshot.app"
 
 killall Dock
