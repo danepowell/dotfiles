@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 
+brew "awscli"
 brew "aws-vault"
 brew "composer"
 brew "curl"
