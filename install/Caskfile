@@ -1,4 +1,3 @@
-cask "docker"
 cask "google-chrome"
 cask "phpstorm"
 cask "slack"
