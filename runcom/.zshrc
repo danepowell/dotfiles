@@ -29,7 +29,7 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,alias,direnv,rvm}; d
 done
 
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias}.macos; do
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,completion}.macos; do
     . "$DOTFILE"
   done
 fi
