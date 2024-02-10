@@ -6,7 +6,7 @@ PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
-export XDG_CONFIG_HOME = $(HOME)/.config
+export XDG_CONFIG_HOME := $(shell bin/is-supported bin/is-macos "$(HOME)/Library/Application Support" "$(HOME)/.config")
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
 

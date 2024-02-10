@@ -4,7 +4,7 @@
  '("melpa" . "https://melpa.org/packages/")
  t)
 
-(add-to-list 'load-path "~/.config/emacs/lisp")
+(add-to-list 'load-path (substitute-in-file-name "${XDG_CONFIG_HOME}/emacs/lisp"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,9 +30,6 @@
 ;; Autosave preferences
 (setq auto-save-file-name-transforms
           `((".*" ,temporary-file-directory t)))
-
-;; Abbreviations
-(setq abbrev-file-name "~/.config/emacs/abbrev_defs")
 
 ;; Spaces instead of tabs
 (setq-default indent-tabs-mode nil)
