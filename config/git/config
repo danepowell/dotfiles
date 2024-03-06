@@ -4,6 +4,7 @@
 	signingkey = DC893801D122A571
 [core]
 	excludesfile = ~/.config/git/ignore
+	ignorecase = false
 [commit]
 	gpgsign = true
 [init]
