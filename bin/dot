@@ -13,6 +13,7 @@ sub_help () {
   echo "   edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)"
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
+  echo "   ubuntu           Apply Ubuntu system defaults"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)"
 }
@@ -50,6 +51,11 @@ sub_macos () {
     echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
   echo "Done. Some changes may require a logout/restart to take effect."
+}
+
+sub_ubuntu () {
+  . "${DOTFILES_DIR}"/ubuntu/defaults.sh
+  echo "Done."
 }
 
 case $COMMAND_NAME in
