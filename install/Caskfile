@@ -1,6 +1,7 @@
+cask "caffeine"
 cask "google-chrome"
+cask "karabiner-elements"
 cask "phpstorm"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
-cask "karabiner-elements"
