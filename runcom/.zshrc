@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="true"
 zstyle ':completion:*:*:git*' ignored-patterns 'fetch-pack|merge-*|mergetool'
-plugins=(git git-auto-fetch)
+plugins=(git-auto-fetch)
 source $ZSH/oh-my-zsh.sh
 unsetopt share_history
 
