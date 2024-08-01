@@ -13,7 +13,7 @@ prepend-path "$DOTFILES_DIR/bin"
 prepend-path "$N_PREFIX/bin"
 prepend-path "$HOME/go/bin"
 prepend-path "$HOME/.rvm/bin"
-
+prepend-path "${KREW_ROOT:-$HOME/.krew}/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
