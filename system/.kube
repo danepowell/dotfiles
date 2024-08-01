@@ -1,0 +1,2 @@
+export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"

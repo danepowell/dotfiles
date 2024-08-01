@@ -24,7 +24,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,exports,alias,rvm}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,exports,alias,kube,rvm}; do
   . "$DOTFILE"
 done
 
