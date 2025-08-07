@@ -46,5 +46,4 @@ export DOTFILES_DIR
 # https://stackoverflow.com/questions/48341920/git-branch-command-behaves-like-less
 export LESS=-FRX
 export TELEPORT_ADD_KEYS_TO_AGENT=no
-source /opt/teleport-tool/aliases
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
