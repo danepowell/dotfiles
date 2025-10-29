@@ -20,7 +20,7 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,exports,alias,kube,r
 done
 
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,completion}.macos; do
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias}.macos; do
     . "$DOTFILE"
   done
 fi
@@ -33,6 +33,9 @@ zstyle ':completion:*:*:git*' ignored-patterns 'fetch-pack|merge-*|mergetool'
 plugins=(git-auto-fetch direnv)
 source $ZSH/oh-my-zsh.sh
 unsetopt share_history
+
+# Completions have to be loaded after oh-my-zsh is sourced
+. "$DOTFILES_DIR/system/.completion.macos"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -47,3 +50,4 @@ export DOTFILES_DIR
 export LESS=-FRX
 export TELEPORT_ADD_KEYS_TO_AGENT=no
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
+export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
