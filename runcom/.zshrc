@@ -51,3 +51,9 @@ export LESS=-FRX
 export TELEPORT_ADD_KEYS_TO_AGENT=no
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
+
+. "$HOME/Library/../bin/env"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/dane.powell/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
