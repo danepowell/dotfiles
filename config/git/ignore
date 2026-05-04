@@ -1,3 +1,11 @@
 .idea
 .vscode
 .DS_Store
+.serena
+.playwright-mcp
+.self-review.yaml
+balint
+review.xml
+**/.claude/settings.local.json
+
+**/.claude/settings.local.json
