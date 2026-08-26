@@ -1483,6 +1483,24 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Printscreen key to Screenshot",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": { "optional": ["caps_lock"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "5",
+                                        "modifiers": ["left_command", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "End to Command Right",
                         "manipulators": [
                             {
