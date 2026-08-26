@@ -54,6 +54,12 @@ export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
 
 . "$HOME/Library/../bin/env"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/dane.powell/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+# include AH profile
+if [[ -f ~/.ah_profile ]]; then
+  . ~/.ah_profile
+fi
+
+# Override ls directory color (dark blue instead of light cyan)
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export LS_COLORS="di=34:${LS_COLORS}"
+
