@@ -14,6 +14,30 @@ if [ -f ~/.bash_aliases.local ]; then
     . ~/.bash_aliases.local
 fi
 
+samehead() {
+  git remote | while read -r remote; do
+    printf '%s\t' "$remote"
+    git ls-remote "$remote" HEAD | awk '{print $1}'
+  done | awk '
+    NR == 1 { first = $2 }
+    $2 != first { same = 0 }
+    { same = (NR == 1 ? 1 : same) }
+    END {
+      if (NR == 0) {
+        print "No remotes found"
+        exit 1
+      }
+      if (same) {
+        print "All remotes have the same HEAD"
+        exit 0
+      } else {
+        print "Remotes differ"
+        exit 1
+      }
+    }
+  '
+}
+
 cb() {
   local _scs_col="\e[0;32m"; local _wrn_col='\e[1;31m'; local _trn_col='\e[0;33m'
   # Check user is not root (root doesn't have access to user xorg server)
