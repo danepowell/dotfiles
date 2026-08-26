@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t;-*-
 (package-initialize)
 (add-to-list
  'package-archives
@@ -13,7 +14,8 @@
  '(inhibit-startup-screen t)
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   '(xclip php-mode yaml-mode json-mode smartparens markdown-mode expand-region auto-complete))
+    '(auto-complete dtrt-indent expand-region json-mode markdown-mode
+       php-mode smartparens xclip yaml-mode))
  '(safe-local-variable-values '((encoding . utf-8)))
  '(vc-follow-symlinks t))
 
@@ -36,25 +38,15 @@
 
 ;; JS styles
 (setq js-indent-level 4)
-
+(add-hook 'json-mode-hook 'dtrt-indent-mode)
 ;; JSON indentation is borked https://github.com/joshwnj/json-mode/issues/75
 
 (xclip-mode 1)
 
 ;; Require modes
 (require 'sgml-mode)
-(require 'drupal-mode)
 (require 'markdown-mode)
-(require 'apache-mode)
 (require 'auto-complete-config)
-(require 'typopunct)
-(typopunct-change-language 'english t)
-(add-hook 'markdown-mode-hook 'my-markdown-init)
-(defun my-markdown-init ()
-  (require 'typopunct)
-  (typopunct-change-language 'english)
-  (typopunct-mode 1))
-(require 'editorconfig)
 (editorconfig-mode 1)
 
 ;; Display line and column numbers
@@ -63,7 +55,6 @@
 
 ;; Auto-complete config
 (ac-config-default)
-(add-to-list 'ac-modes 'drupal-mode)
 
 ;; 80 columns
 (setq whitespace-style '(face empty tabs lines-tail trailing))
@@ -73,19 +64,9 @@
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . sgml-mode))
 
-(add-to-list 'auto-mode-alist '("\\.\\(module\\|test\\|install\\|theme\\|profile\\)$" . drupal-mode))
-(add-to-list 'auto-mode-alist '("\\.\\(php\\|inc\\)$" . drupal-mode))
-(add-to-list 'auto-mode-alist '("\\.\\(drush\\)$" . drupal-mode))
-
 (add-to-list 'auto-mode-alist '("\\.info\\'" . conf-windows-mode))
 
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
-
-(add-to-list 'auto-mode-alist '("\\.htaccess\\'"   . apache-mode))
-(add-to-list 'auto-mode-alist '("httpd\\.conf\\'"  . apache-mode))
-(add-to-list 'auto-mode-alist '("srm\\.conf\\'"    . apache-mode))
-(add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
-(add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
