@@ -62,4 +62,5 @@ fi
 # Override ls directory color (dark blue instead of light cyan)
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export LS_COLORS="di=34:${LS_COLORS}"
-
+# Apply the same colors to tab-completion listings
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
