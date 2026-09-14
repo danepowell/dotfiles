@@ -1,0 +1,5 @@
+# Make Ctrl-W cut the active region instead of deleting a word
+"\C-w": kill-region
+
+# Optional: Map Alt-W to copy the region without cutting it
+"\ew": copy-region-as-kill
