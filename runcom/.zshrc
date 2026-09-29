@@ -36,12 +36,10 @@ autoload bashcompinit
 bashcompinit
 
 # Some dotfiles have to be loaded after oh-my-zsh is sourced
-for DOTFILE in "$DOTFILES_DIR"/system/.{completion}; do
-  . "$DOTFILES_DIR/system/.completion"
-done
-
 if is-macos; then
   . "$DOTFILES_DIR/system/.completion.macos"
+else
+  . "$DOTFILES_DIR/system/.completion"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
