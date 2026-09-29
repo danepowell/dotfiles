@@ -14,7 +14,6 @@ DOTFILES_DIR="$HOME/.dotfiles"
 PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
-
 for DOTFILE in "$DOTFILES_DIR"/system/.{function,n,path,env,exports,alias,kube}; do
   . "$DOTFILE"
 done
@@ -33,9 +32,17 @@ zstyle ':completion:*:*:git*' ignored-patterns 'fetch-pack|merge-*|mergetool'
 plugins=(git-auto-fetch direnv)
 source $ZSH/oh-my-zsh.sh
 unsetopt share_history
+autoload bashcompinit
+bashcompinit
 
-# Completions have to be loaded after oh-my-zsh is sourced
-. "$DOTFILES_DIR/system/.completion.macos"
+# Some dotfiles have to be loaded after oh-my-zsh is sourced
+for DOTFILE in "$DOTFILES_DIR"/system/.{completion}; do
+  . "$DOTFILES_DIR/system/.completion"
+done
+
+if is-macos; then
+  . "$DOTFILES_DIR/system/.completion.macos"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -51,8 +58,6 @@ export LESS=-FRX
 export TELEPORT_ADD_KEYS_TO_AGENT=no
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
-
-. "$HOME/Library/../bin/env"
 
 # include AH profile
 if [[ -f ~/.ah_profile ]]; then
