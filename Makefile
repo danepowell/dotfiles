@@ -29,14 +29,10 @@ stow-macos: brew
 stow-linux:
 	is-executable stow || sudo apt-get -y install stow
 
-linux-packages: node apt-packages n npm node-packages
+linux-packages: apt-packages node node-packages
 
 node:
-ifneq ("$(wildcard $(/etc/apt/keyrings/nodesource.gpg))","")
-	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-	sudo apt update
-endif
+	is-executable n || curl -L https://bit.ly/n-install | bash
 
 apt-packages:
 	sudo apt install $(shell cat install/apt)
